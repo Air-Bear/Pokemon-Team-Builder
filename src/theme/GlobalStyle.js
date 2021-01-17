@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
     nav{
         background: grey;
-        
+
         ul{
             display: flex;
             width: 100%;
@@ -79,11 +79,63 @@ const GlobalStyle = createGlobalStyle`
         border-radius: 15px;
     }
 
-    .poke-icon{ 
-        img{
+    .planner-parent{
+        display: flex;
+        .expand-btn{
+            display: inline-block;
+            margin: auto;
+            background-color: white;
             border-radius: 100%;
+            width: 4rem;
+            height: 4rem;
+            svg{
+                margin: 10% 0;
+            }
+        }
+        .poke-team{
+            width: 50%;
+            margin: 2%;
+            display: flex;
+            flex-wrap: wrap;
+            .poke-card{
+                width: 26%;
+                margin: 1.2%;
+                img{
+                    width: 100%;
+                    border-radius: 100%;
+                    margin: .2rem;
+                }
+            }
         }
     }
+    .poke-search{
+        margin: 4% 0;
+        input{
+           width: 80%;
+           height: 1.7rem; 
+        }
+        
+    }
+    
+
+    .results-div{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        .poke-card{
+            width: 15%;
+            margin: .8%;
+            .poke-icon{ 
+        
+                img{
+                    width: 100%;
+                    border-radius: 100%;
+                }
+            
+            }
+        }
+    }
+    
     .formGroup{
         label{
             font-weight: bold;
@@ -138,8 +190,11 @@ const GlobalStyle = createGlobalStyle`
             
         }
         .poke-icon{ 
+            
             img{
-                width: 20%;
+                float: left;
+                width: 12%;
+                margin: 0 .33%;
             }
         }
         button{

@@ -1,14 +1,17 @@
 import React from "react";
-import logo from "../logo.jpg";
+import PokeCard from "./PokeCard.js";
 
-function PokeCard(props){
+function PokeCards(props){
+    var arr = [1,1,1,1,1,1,1];
     return(
-        <div>
-            <div className="poke-icon">
-                <img src={logo} alt="" />
-            </div>
+        <div className="results-div">
+            {
+                arr.map(arr => (
+                    <PokeCard />
+                ))
+            }
         </div>
     );
 }
 
-export default PokeCard;
+export default PokeCards;
