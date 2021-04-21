@@ -12,6 +12,9 @@ export const GlobalStyles = withStyles({
         ".user-form": {
             display: "flex",
             flexDirection: "column"
+        },
+        ".logo-div":{
+            padding: 0
         }
     }
     
