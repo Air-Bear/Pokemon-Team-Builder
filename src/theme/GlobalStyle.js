@@ -13,9 +13,6 @@ export const GlobalStyles = withStyles({
             display: "flex",
             flexDirection: "column"
         },
-        ".logo-div":{
-            padding: 0
-        }
     }
     
 })(() => null);
