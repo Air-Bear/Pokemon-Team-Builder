@@ -3,11 +3,14 @@ import { Paper, InputBase, TextField, IconButton, makeStyles } from "@material-u
 import { Search } from "@material-ui/icons";
 import PokemonTeam from "./PokemonTeam";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     root:{
         margin: "1rem auto",
-        width: "60%",
-        backgroundColor: "grey"
+        width: "100%",
+        backgroundColor: "grey",
+        [theme.breakpoints.up("lg")]: {
+            width: "80%"
+        }
     },
     field: {
         width: "70%"
