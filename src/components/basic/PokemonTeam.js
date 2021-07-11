@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { makeStyles, Avatar, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import PopoverList from "./PopoverList";
-import pokeball from "../../icons8-pokeball-48.png";
+import PokeCard from "./PokeCard";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,18 +32,6 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up("sm")]: {
             width: "50%",
         }
-    },
-    pokeCard: {
-        width: "5rem",
-        height: "5rem",
-        [theme.breakpoints.up("sm")]: {
-            width: "6.3rem",
-            height: "6.3rem"
-        }
-    },
-    pokeImg: {
-        width: "100%",
-        height: "100%"
     }
 }));
 
@@ -58,24 +46,14 @@ function PokemonTeam({team}){
                 <div className={classes.former}>
                     {team.map((pokemon, i) => (
                         i < 3 ?
-                            <div className={classes.pokeCard}>
-                                <Avatar className={classes.pokeImg} src={pokemon ? pokemon.img : pokeball} />
-                                <Typography>
-                                    {pokemon ? pokemon.name : null}    
-                                </Typography>   
-                            </div>
+                        <PokeCard pokemon={pokemon} />
                         : null
                     ))}
                 </div>
                 <div className={classes.latter}>
                     {team.map((pokemon, i) => (
                         i > 2 ?
-                            <div className={classes.pokeCard}>
-                                <Avatar className={classes.pokeImg} src={pokemon ? pokemon.img : pokeball} />
-                                <Typography>
-                                    {pokemon ? pokemon.name : null}    
-                                </Typography>   
-                            </div>
+                        <PokeCard pokemon={pokemon} />
                         : null
                     ))}
                 </div>
