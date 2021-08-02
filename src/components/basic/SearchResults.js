@@ -4,6 +4,7 @@ import axios from "axios";
 import PokeCard from "./PokeCard";
 import cache from "../../utils/cache";
 import storage from "../../utils/storage";
+import { Telegram } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function SearchResults(){
+function SearchResults(props){
     const classes = useStyles();
 
     let promises = [];
@@ -31,14 +32,13 @@ function SearchResults(){
         } else {
         axios.get(url)
         .then(res => {
-            res.data.results.map(pokemon => {
+            res.data.results.forEach(pokemon => {
                 promises.push(axios.get(pokemon.url))
             })
             Promise.all(promises)
             .then(res => {
                 cache(res)
                 setPokemon(storage.pokemon)
-                console.log("from the network")
             })
         })
         .catch(err => {
@@ -48,9 +48,9 @@ function SearchResults(){
     }, []);
 
     return(
-        <div className={classes.root}>
+        <div className={`${classes.root} results-wrapper`}>
             {pokemon.map(pokemon => (
-                <PokeCard pokemon={pokemon} />
+                <PokeCard pokemon={pokemon} key={pokemon.id} setTeam={props.setTeam} team={props.team} />
             ))}
             
         </div>

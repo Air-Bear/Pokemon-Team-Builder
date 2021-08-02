@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core";
 import PopoverList from "./PopoverList";
 import PokeCard from "./PokeCard";
@@ -35,25 +35,35 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+function createTeam(team){
+    var teamCards = [];
+    for(var i = 0; i < team.size; i++){
+        teamCards.push(<PokeCard pokemon={team.members[i] ? team.members[i] : {}} />)
+    }
+    return teamCards;
+}
+
 function PokemonTeam({team}){
     const classes = useStyles();
-    
+
+    var teamElements = createTeam(team);
+    console.log((team.size/2)-1)
 
     return(
         <div className={classes.root}>
             <PopoverList />
             <div className={classes.teamSection}>
                 <div className={classes.former}>
-                    {team.map((pokemon, i) => (
-                        i < 3 ?
-                        <PokeCard pokemon={pokemon} />
+                    {teamElements.map((pokemon, i) => (
+                        i <= (team.size/2)-1 ? 
+                        pokemon
                         : null
                     ))}
                 </div>
                 <div className={classes.latter}>
-                    {team.map((pokemon, i) => (
-                        i > 2 ?
-                        <PokeCard pokemon={pokemon} />
+                    {teamElements.map((pokemon, i) => (
+                        i > (team.size/2)-1 ?
+                        pokemon
                         : null
                     ))}
                 </div>
