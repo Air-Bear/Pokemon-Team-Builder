@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import NavBar from "../basic/NavBar";
 import SearchBar from "../basic/SearchBar";
-import pokeball from "../../icons8-pokeball-48.png";
+import SearchResults from "../basic/SearchResults";
 
 function PokeSearch(){
-    const [team, setTeam] = useState([null, null, null, null, null, null]);
+    const [team, setTeam] = useState({
+        size: 6,
+        name: "Team",
+        members: []
+    });
+
+
+
     return(
         <>
             <NavBar />
             <SearchBar team={team} />
+            <SearchResults team={team} setTeam={setTeam} />
         </>
     );
 };

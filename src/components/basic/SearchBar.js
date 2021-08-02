@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, InputBase, TextField, IconButton, makeStyles } from "@material-ui/core";
+import { Paper, TextField, IconButton, makeStyles, Typography } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import PokemonTeam from "./PokemonTeam";
 
@@ -22,6 +22,9 @@ function SearchBar({ team }){
 
     return(
         <Paper component="div" className={classes.root}>
+            <Typography>
+                {team.name}
+            </Typography>
             <PokemonTeam team={team} />
             <form>
                 <TextField className={classes.field} />
