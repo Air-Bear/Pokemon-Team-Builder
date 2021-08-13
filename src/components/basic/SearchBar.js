@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SearchBar({ team }){
+function SearchBar({ team, setTeam }){
     const classes = useStyles();
 
     return(
@@ -25,7 +25,7 @@ function SearchBar({ team }){
             <Typography>
                 {team.name}
             </Typography>
-            <PokemonTeam team={team} />
+            <PokemonTeam team={team} setTeam={setTeam} />
             <form>
                 <TextField className={classes.field} />
                 <IconButton type="submit">

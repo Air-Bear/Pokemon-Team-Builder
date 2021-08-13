@@ -4,7 +4,6 @@ import axios from "axios";
 import PokeCard from "./PokeCard";
 import cache from "../../utils/cache";
 import storage from "../../utils/storage";
-import { Telegram } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,7 +49,7 @@ function SearchResults(props){
     return(
         <div className={`${classes.root} results-wrapper`}>
             {pokemon.map(pokemon => (
-                <PokeCard pokemon={pokemon} key={pokemon.id} setTeam={props.setTeam} team={props.team} />
+                <PokeCard pokemon={pokemon} key={pokemon.id} setTeam={props.setTeam} team={props.team} result={true} />
             ))}
             
         </div>

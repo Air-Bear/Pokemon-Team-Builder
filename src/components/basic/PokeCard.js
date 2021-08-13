@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles, Avatar, Typography } from "@material-ui/core";
-import pokeball from "../../icons8-pokeball-48.png";
+import { makeStyles, Typography } from "@material-ui/core";
+import PokeAvatar from "./PokeAvatar";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -12,26 +12,14 @@ const useStyles = makeStyles((theme) => ({
             width: "6.3rem",
             height: "6.3rem"
         }
-    },
-    pokemon:{
-        background: color => {
-            
-            return color.length === 1 ? color : `linear-gradient(135deg, ${color[0]} 50%, ${color[1]} 50%)`
-        },
-        border: "1px black solid"
-    },
-    pokeImg: {
-        width: "100%",
-        height: "100%"
     }
 }));
 
-function PokeCard({team, setTeam, pokemon}){
+function PokeCard({team, setTeam, pokemon, ...props}){
     const [bgColor, setBgColor] = useState();
-    const classes = useStyles(bgColor);
+    const classes = useStyles();
 
     const clickHandler = (pokemon) => {
-        console.log("clicked", pokemon)
         if(team.members.length < team.size){
             setTeam({
                 ...team,
@@ -47,8 +35,8 @@ function PokeCard({team, setTeam, pokemon}){
     }, [pokemon])
 
     return(
-    <div className={pokemon.name ? `${classes.root} ${classes.pokemon} ${pokemon.name}` : classes.root} onClick={team ? () => clickHandler(pokemon) : null}>
-        <Avatar className={classes.pokeImg} src={pokemon.sprites ? pokemon.sprites.front_default : pokeball} />
+    <div className={pokemon.name ? `${classes.root} ${pokemon.name}` : classes.root} onClick={props.result ? () => clickHandler(pokemon) : null} >
+        <PokeAvatar index={props.index} pokemon={pokemon} bgColor={bgColor} team={team} setTeam={setTeam} result={props.result} />
         <Typography>
             {pokemon ? pokemon.name : null}    
         </Typography>   
