@@ -1,6 +1,5 @@
 const storage = require("./storage.js");
 const pokemon_colors = require("../theme/pokemonColors");
-const { bgcolor } = require("@material-ui/system");
 
 let cache = function(data){
     data.forEach(pokemon => {

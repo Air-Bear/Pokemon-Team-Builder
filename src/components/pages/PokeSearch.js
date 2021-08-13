@@ -15,7 +15,7 @@ function PokeSearch(){
     return(
         <>
             <NavBar />
-            <SearchBar team={team} />
+            <SearchBar team={team} setTeam={setTeam} />
             <SearchResults team={team} setTeam={setTeam} />
         </>
     );

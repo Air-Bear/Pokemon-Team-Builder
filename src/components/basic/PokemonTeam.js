@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import { grey } from "@material-ui/core/colors";
 import PopoverList from "./PopoverList";
 import PokeCard from "./PokeCard";
 
@@ -35,19 +36,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function createTeam(team){
+function createTeam(team, setTeam){
     var teamCards = [];
     for(var i = 0; i < team.size; i++){
-        teamCards.push(<PokeCard pokemon={team.members[i] ? team.members[i] : {}} />)
+        teamCards.push(<PokeCard index={i} key={i} pokemon={team.members[i] ? team.members[i] : {bgColors: [grey[500]]}} team={team} setTeam={setTeam} />)
     }
     return teamCards;
 }
 
-function PokemonTeam({team}){
+function PokemonTeam({team, setTeam}){
     const classes = useStyles();
 
-    var teamElements = createTeam(team);
-    console.log((team.size/2)-1)
+    var teamElements = createTeam(team, setTeam);
 
     return(
         <div className={classes.root}>
