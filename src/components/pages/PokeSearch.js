@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "../basic/NavBar";
-import SearchBar from "../basic/SearchBar";
-import SearchResults from "../basic/SearchResults";
+import SearchBar from "../simple/SearchBar";
+import SearchResults from "../simple/SearchResults";
 
 function PokeSearch(){
     const [team, setTeam] = useState({

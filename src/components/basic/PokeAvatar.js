@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { makeStyles, Avatar } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { red, grey } from "@material-ui/core/colors";
@@ -66,7 +67,16 @@ function PokeAvatar({ pokemon, bgColor, team , setTeam, ...props}){
             <img src={pokemon.sprites ? pokemon.sprites.front_default : pokeball} alt={pokemon.name ? `${pokemon.name} sprite` : "picture of pokeball"} />
             <div className={classes.overlay}>
                 <Delete className={`${classes.icons} ${classes.red}`} style={style} onClick={() => deleteMember(props.index)} />
-                <Edit className={`${classes.icons} ${classes.grey}`} style={style} />     
+                <Link
+                to={{
+                    pathname: `/team/${props.index+1}/edit`,
+                    state: {
+                        pokemon: pokemon
+                    }
+                }}
+                >
+                    <Edit className={`${classes.icons} ${classes.grey}`} style={style} />    
+                </Link> 
             </div>
         </Avatar>
     );
