@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 export const GlobalStyles = withStyles({
     "@global": {
         "body": {
-            backgroundColor: "MidnightBlue",
+            backgroundColor: "Blue",
         },
         "a": {
             color: "inherit",

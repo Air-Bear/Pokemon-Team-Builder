@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { makeStyles, Typography } from "@material-ui/core";
-import PokeAvatar from "./PokeAvatar";
+import PokeAvatar from "../basic/PokeAvatar";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,20 +15,30 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function PokeCard({team, setTeam, pokemon, ...props}){
+const PokeCard = React.memo(({team, setTeam, pokemon, ...props})=>{
     const [bgColor, setBgColor] = useState();
     const classes = useStyles();
+    if(pokemon){
+        console.log("rendered ", pokemon.name)
+    }
 
-    const clickHandler = (pokemon) => {
+    const clickHandler = useCallback((pokemon) => {
         if(team.members.length < team.size){
+            pokemon["moveset"] = [
+                {name: "none"},
+                {name: "none"},
+                {name: "none"},
+                {name: "none"}
+            ]
             setTeam({
                 ...team,
                 members: [...team.members,
                 pokemon
                 ] 
             })
+            console.log(pokemon)
         }
-    }
+    })
 
     useEffect(() => {
         setBgColor(pokemon.bgColors)
@@ -41,6 +51,6 @@ function PokeCard({team, setTeam, pokemon, ...props}){
             {pokemon ? pokemon.name : null}    
         </Typography>   
     </div>);
-};
+});
 
 export default PokeCard;
